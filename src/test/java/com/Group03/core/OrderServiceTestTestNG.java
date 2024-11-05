@@ -50,9 +50,15 @@ public class OrderServiceTestTestNG {
     @DataProvider(name = "validPriceData")
     public Object[][] validPriceData() {
         return new Object[][] {
+                // Trường hợp giá gốc bằng 0, dù có giảm giá nào thì kết quả vẫn phải bằng 0.
+                {0.0, 5, "VIP", "DISCOUNT10", 0.0}, // Kết quả: 0 * (bất kỳ discount nào) = 0.0
+                // Trường hợp biên: Số lượng bằng 0, không ảnh hưởng đến giảm giá, giảm 30% từ VIP và DISCOUNT10.
+                {100.0, 0, "VIP", "DISCOUNT10", 0}, // Kết quả: 100 * (1 - 0.3) = 70.0
                 {100.0, 5, "VIP", null, 400.0}, // VIP 20%
                 {100.0, 3, "Regular", null, 270.0}, // Regular 10%
                 {200.0, 1, "Regular", "DISCOUNT10", 160.0}, // Regular 10% + 10% code
+                //Khách hàng Regular có mã giảm giá và số lượng = 10, chỉ giảm 20% từ Regular và mã DISCOUNT10.
+                {100.0, 10, "Regular", "DISCOUNT10", 800.0},
                 {50.0, 15, "Regular", null, 637.5}, // Regular + bulk
                 {50.0, 15, "Other", null, 712.5}    // Other + bulk
         };
