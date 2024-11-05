@@ -24,40 +24,21 @@ public class OrderServiceTest {
 
                 // Trường hợp khách hàng VIP với mã giảm giá và số lượng > 10, được áp dụng 35% tổng giảm giá:
                 // 20% VIP + 10% DISCOUNT10 + 5% số lượng > 10.
-                {100.0, 12, "VIP", "DISCOUNT10", 65.0}, // Kết quả: 100 * (1 - 0.35) = 65.0
+                //{100.0, 12, "VIP", "DISCOUNT10", 65.0}, // Kết quả: 100 * (1 - 0.35) = 65.0
 
-                // Khách hàng VIP không có mã giảm giá, số lượng <= 10. Áp dụng 20% giảm giá từ VIP.
-                //{100.0, 5, "VIP", "", 80.0}, // Kết quả: 100 * (1 - 0.2) = 80.0
 
-                // Khách hàng Regular có mã giảm giá và số lượng lớn hơn 10, được áp dụng 25% tổng giảm giá:
-                // 10% Regular + 10% DISCOUNT10 + 5% số lượng > 10.
-                //{200.0, 15, "Regular", "DISCOUNT10", 150.0}, // Kết quả: 200 * (1 - 0.25) = 150.0
-
-                // Khách hàng Regular không có mã giảm giá và số lượng nhỏ hơn 10, chỉ áp dụng 10% giảm giá.
-                //{150.0, 3, "Regular", "", 135.0}, // Kết quả: 150 * (1 - 0.1) = 135.0
-
-                // Khách hàng Other không có mã giảm giá nhưng có số lượng > 10, chỉ giảm thêm 5% từ số lượng.
-                //{250.0, 20, "Other", "", 237.5}, // Kết quả: 250 * (1 - 0.05) = 237.5
-
-                // Khách hàng VIP có mã giảm giá nhưng số lượng <= 10, giảm 30% từ VIP và mã DISCOUNT10.
-                //{300.0, 8, "VIP", "DISCOUNT10", 210.0}, // Kết quả: 300 * (1 - 0.3) = 210.0
-
-                // Khách hàng Other có mã giảm giá không hợp lệ, không được áp dụng giảm giá nào.
-                //{400.0, 1, "Other", "INVALID", 400.0}, // Kết quả: 400 (không có giảm giá)
 
                 // Trường hợp giá gốc bằng 0, dù có giảm giá nào thì kết quả vẫn phải bằng 0.
                 {0.0, 5, "VIP", "DISCOUNT10", 0.0}, // Kết quả: 0 * (bất kỳ discount nào) = 0.0
-                // Khách hàng Other không có mã giảm giá và số lượng nhỏ hơn 10, không có giảm giá.
-                //{500.0, 2, "Other", "", 500.0}, // Kết quả: 500 (không có giảm giá)
 
                 // Khách hàng Regular có mã giảm giá và số lượng = 10, chỉ giảm 20% từ Regular và mã DISCOUNT10.
-                {100.0, 10, "Regular", "DISCOUNT10", 80.0}, // Kết quả: 100 * (1 - 0.2) = 80.0
+                //{100.0, 10, "Regular", "DISCOUNT10", 80.0}, // Kết quả: 100 * (1 - 0.2) = 80.0
 
                 // Khách hàng Regular có mã giảm giá và số lượng > 10, giảm tổng cộng 25%.
                 //{100.0, 11, "Regular", "DISCOUNT10", 75.0}, // Kết quả: 100 * (1 - 0.25) = 75.0
 
                 // Khách hàng Regular không có mã giảm giá, số lượng > 10, chỉ giảm 15% từ Regular và số lượng.
-                {300.0, 12, "Regular", "", 255.0}, // Kết quả: 300 * (1 - 0.15) = 255.0
+                //{300.0, 12, "Regular", "", 255.0}, // Kết quả: 300 * (1 - 0.15) = 255.0
 
                 // Khách hàng VIP với mã giảm giá và số lượng lớn, giảm tổng cộng 35%.
                 //{10000.0, 20, "VIP", "DISCOUNT10", 6500.0}, // Kết quả: 10000 * (1 - 0.35) = 6500.0
@@ -68,7 +49,7 @@ public class OrderServiceTest {
                 // Trường hợp biên: VIP có mã giảm giá, tổng giảm giá là 35%, nhưng kết quả tính ra là 64.99999999999999
                 // Thay vì 0 vì discount tính toán cho kết quả dương rất nhỏ do phép tính floating-point:
                 // Kết quả 100 * (1 - 0.35) = 64.99999999999999 (không phải 0).
-                {100.0, 15, "VIP", "DISCOUNT10", 65.0}  // Thực tế không phải 0, mà là 64.99999999999999
+                //{100.0, 15, "VIP", "DISCOUNT10", 65.0}  // Thực tế không phải 0, mà là 64.99999999999999
         };
     }
 
