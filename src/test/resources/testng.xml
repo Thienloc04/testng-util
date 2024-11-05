@@ -1,0 +1,29 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Payment Service Suite">
+    <test name="Service Suite">
+        <classes>
+            <class name="com.Group03.core.OrderServiceTestTestNG"></class>
+            <class name="com.Group03.core.PaymentServiceTestTestNG"></class>
+        </classes>
+    </test>
+<!--    <test name="Valid Cases Only">-->
+<!--        <groups>-->
+<!--            <run>-->
+<!--                <include name="validCases"/>-->
+<!--            </run>-->
+<!--        </groups>-->
+<!--        <classes>-->
+<!--            <class name="com.Group03.core.OrderServiceTestTestNG"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--    <test name="Exception Cases Only">-->
+<!--        <groups>-->
+<!--            <run>-->
+<!--                <include name="exceptionCases"/>-->
+<!--            </run>-->
+<!--        </groups>-->
+<!--        <classes>-->
+<!--            <class name="com.Group03.core.OrderServiceTestTestNG"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+</suite>
